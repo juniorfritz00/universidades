@@ -1,7 +1,13 @@
-const request = require('axios')
+const request = require('request')
 
-let universidades = 'http://universities.hipolabs.com/search?country=uruguay'
+let options = {
+    method: 'GET',
+    url: 'http://universities.hipolabs.com/search?country=uruguay',
+    json: true
+}
 
-let x = request(universidades)
 
-console.log(x)
+request(options, function (error, response) {
+    if (error) throw new Error(error);
+    console.log(response.body);
+  });
